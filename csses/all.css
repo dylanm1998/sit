@@ -418,45 +418,55 @@ footer {
    全局响应式：平板 & 手机
 ================================ */
 
-/* 平板及以下，整体收紧内边距、字体 */
-@media (max-width: 920px){
+/* 平板及以下（<= 920px）：整体收紧内边距、改为更紧凑布局 */
+@media (max-width: 920px) {
+
+    /* 顶部导航 */
     header {
         padding: 10px 20px;
         flex-wrap: wrap;
         row-gap: 8px;
     }
 
+    /* 通用 section 内边距缩小 */
     section {
         padding: 40px 20px;
     }
 
+    /* 图文区块 padding & 间距缩小 */
     .feature {
         padding: 40px 20px;
         gap: 24px;
     }
 
+    /* 统计区块 padding 缩小 */
     .statistics {
         padding: 40px 0;
     }
 
+    /* Social Media 区块 padding 缩小 */
     .social-media {
         padding: 40px 16px;
     }
 
-    .contact{
-        padding:48px 20px;
+    /* 联系我们：改为单列 */
+    .contact {
+        padding: 48px 20px;
     }
-    .contact-grid{
+
+    .contact-grid {
         grid-template-columns: 1fr;
     }
-    .contact-form .row{
+
+    .contact-form .row {
         grid-template-columns: 1fr;
     }
 }
 
-/* 手机端：大部分内容改为单列布局 */
+/* 手机端（<= 600px）：大部分内容改为单列布局 */
 @media (max-width: 600px) {
 
+    /* 顶部导航改为上下排列 */
     header {
         padding: 8px 16px;
         flex-direction: column;
@@ -473,6 +483,7 @@ footer {
         gap: 6px;
     }
 
+    /* section 再缩小一点 padding */
     section {
         padding: 32px 16px;
     }
@@ -481,6 +492,7 @@ footer {
         font-size: 1em;
     }
 
+    /* Feature 图文区块：上下排、图片 100% 宽 */
     .feature {
         flex-direction: column;   /* 图文上下排 */
         text-align: left;
@@ -495,6 +507,7 @@ footer {
         font-size: 1.3em;
     }
 
+    /* 统计区块：间距 & 卡片缩小 */
     .stats-container {
         gap: 24px;
     }
@@ -504,7 +517,7 @@ footer {
         padding: 16px;
     }
 
-    /* ✅ Social Media 手机适配：改成竖着一列、宽度自适应 */
+    /* ✅ Social Media 手机适配：竖排、自适应宽度 */
     .social-media {
         padding: 32px 16px;
     }
@@ -526,8 +539,8 @@ footer {
         height: 48px;
     }
 
-    .contact h2{
+    /* 联系我们标题稍微变小一点 */
+    .contact h2 {
         font-size: 1.6em;
     }
 }
-
