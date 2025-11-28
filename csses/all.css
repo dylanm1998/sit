@@ -488,13 +488,26 @@ footer {
         padding: 16px;
     }
 
+    /* ✅ Social Media 手机适配：改成竖着一列、宽度自适应 */
+    .social-media {
+        padding: 32px 16px;
+    }
+
     .social-icons {
-        gap: 20px;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
     }
 
     .social-card {
-        width: 160px;
+        width: 100%;
+        max-width: 320px;
         padding: 16px;
+    }
+
+    .social-card img {
+        width: 48px;
+        height: 48px;
     }
 
     .contact h2{
