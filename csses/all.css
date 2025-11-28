@@ -546,3 +546,28 @@ footer {
 }
 
 
+/* Company Introduction 的背景图 */
+.intro-section {
+    position: relative;
+    padding: 60px 80px;                 /* 可以和你原来的 section 一样 */
+    background-image: url('imgs/intro_bg.jpg'); /* 换成你自己的图片路径 */
+    background-size: cover;             /* 铺满 */
+    background-position: center;        /* 居中 */
+    background-repeat: no-repeat;
+    color: #fff;                        /* 白字在图上更清晰 */
+}
+
+/* 如果图片太亮，看不清字，加一个半透明遮罩（可选） */
+.intro-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);    /* 黑色半透明 */
+    z-index: 0;
+}
+
+/* 确保文字在遮罩上面 */
+.intro-section > * {
+    position: relative;
+    z-index: 1;
+}
