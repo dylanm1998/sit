@@ -550,7 +550,7 @@ footer {
 .intro-section {
     position: relative;
     padding: 60px 80px;                 /* 可以和你原来的 section 一样 */
-    background-image: url('imgs/intro_bg.jpg'); /* 换成你自己的图片路径 */
+    background-image: url('imgs/welcome.jpg'); /* 换成你自己的图片路径 */
     background-size: cover;             /* 铺满 */
     background-position: center;        /* 居中 */
     background-repeat: no-repeat;
@@ -571,3 +571,4 @@ footer {
     position: relative;
     z-index: 1;
 }
+
