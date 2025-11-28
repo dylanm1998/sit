@@ -255,13 +255,18 @@
     });
 </script>
 
-<!-- Banner 自动轮播：控制每张停留时间 -->
+<!-- Banner 自动轮播：控制每张停留时间（修正版） -->
 <script>
+document.addEventListener('DOMContentLoaded', () => {
     const stay = 3000; // 每张停留时间（毫秒）
     const slides = document.getElementById('slides');
+    if (!slides) return;
+
+    // 原始 slide 列表
+    let frames = Array.from(slides.children);
+    if (frames.length <= 1) return; // 一张图就不用轮播了
 
     // 首尾克隆
-    let frames = Array.from(slides.children); // .slide 列表
     const firstClone = frames[0].cloneNode(true);
     const lastClone  = frames[frames.length - 1].cloneNode(true);
     firstClone.dataset.clone = 'first';
@@ -269,57 +274,82 @@
     slides.appendChild(firstClone);
     slides.insertBefore(lastClone, frames[0]);
 
-    // 重新收集并定位到“真实第一张”（索引1）
+    // 重新收集 frame
     frames = Array.from(slides.children);
+
+    // 当前索引：1 = 真实第一张（前面 0 是 lastClone）
     let idx = 1;
 
-    function goTo(i, noTransition = false){
-        const value = `translate3d(${-i * 100}%, 0, 0)`;
+    function goTo(i, noTransition = false) {
+        idx = i;
+        const value = `translate3d(${-idx * 100}%, 0, 0)`;
         if (noTransition) {
             const old = slides.style.transition;
             slides.style.transition = 'none';
             slides.style.transform  = value;
-            void slides.offsetHeight;           // 强制回流，避免闪动
+            // 强制回流，避免闪动
+            void slides.offsetHeight;
             slides.style.transition = old || '';
         } else {
             slides.style.transform = value;
         }
     }
 
-    // 初始对齐
+    // 初始对齐到真实第一张
     goTo(idx, true);
 
-    // 自动轮播
-    let timer = setInterval(() => { idx++; goTo(idx); }, stay);
+    // 自动轮播定时器
+    let timer = null;
+
+    function startTimer() {
+        if (timer) clearInterval(timer);
+        timer = setInterval(() => {
+            goTo(idx + 1);
+        }, stay);
+    }
+
+    function stopTimer() {
+        if (timer) {
+            clearInterval(timer);
+            timer = null;
+        }
+    }
+
+    startTimer();
 
     // 无缝回跳
     slides.addEventListener('transitionend', () => {
         const cur = frames[idx];
         if (!cur) return;
-        if (cur.dataset.clone === 'first') {  // 到首克隆 -> 回真实第1张
-            idx = 1;
-            goTo(idx, true);
-        } else if (cur.dataset.clone === 'last') { // 到尾克隆 -> 回真实最后一张
-            idx = frames.length - 2;
-            goTo(idx, true);
+
+        if (cur.dataset.clone === 'first') {         // 跑到首克隆 -> 回真实第1张
+            goTo(1, true);
+        } else if (cur.dataset.clone === 'last') {   // 跑到尾克隆 -> 回真实最后一张
+            goTo(frames.length - 2, true);
         }
     });
 
-    // 悬停暂停/移出继续（可选）
-    slides.addEventListener('mouseenter', () => clearInterval(timer));
-    slides.addEventListener('mouseleave', () => {
-        timer = setInterval(() => { idx++; goTo(idx); }, stay);
+    // 标签页不可见时暂停，重新可见时继续（防止长时间挂着出问题）
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            stopTimer();
+        } else {
+            startTimer();
+        }
     });
 
-    // 窗口变化，立即对齐（可选）
-    window.addEventListener('resize', () => goTo(idx, true));
+    // 窗口大小变化时，重新对齐当前位置（防止错位）
+    window.addEventListener('resize', () => {
+        goTo(idx, true);
+    });
+});
 </script>
-
 
 <footer>
     © 2025 Visa Corporation. All rights reserved.
 </footer>
 </body>
 </html>
+
 
 
