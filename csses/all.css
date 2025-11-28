@@ -544,3 +544,30 @@ footer {
         font-size: 1.6em;
     }
 }
+
+/* 通用：带虚化背景图的 section */
+.blur-section {
+    position: relative;
+    overflow: hidden;
+    color: #fff;               /* 背景图上一般用白字更清晰 */
+    background-color: transparent;  /* 覆盖原来 section 的白色背景 */
+}
+
+/* 所有内容在最上层 */
+.blur-section > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* 虚化背景层 */
+.blur-section::before {
+    content: "";
+    position: absolute;
+    inset: 0; /* 等价于 top:0; right:0; bottom:0; left:0; */
+    background-image: var(--bg-image);  /* 使用 CSS 变量传入图片 */
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px) brightness(0.6); /* 模糊 + 降亮度 */
+    transform: scale(1.1);              /* 防止 blur 导致边缘空白 */
+    z-index: 0;
+}
