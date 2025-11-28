@@ -9,6 +9,13 @@ body {
     scroll-behavior: smooth;
 }
 
+/* 让所有普通图片在小屏不溢出 */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 /* ===============================
    Header 顶部导航栏
 ================================ */
@@ -32,6 +39,7 @@ header {
 .lang-switch {
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
 }
 .lang-switch a {
     text-decoration: none;
@@ -390,9 +398,106 @@ footer {
     background:#333;
 }
 
-/* 响应式 */
+/* ===============================
+   全局响应式：平板 & 手机
+================================ */
+
+/* 平板及以下，整体收紧内边距、字体 */
 @media (max-width: 920px){
-    .contact{ padding:48px 20px; }
-    .contact-grid{ grid-template-columns: 1fr; }
-    .contact-form .row{ grid-template-columns: 1fr; }
+    header {
+        padding: 10px 20px;
+        flex-wrap: wrap;
+        row-gap: 8px;
+    }
+
+    section {
+        padding: 40px 20px;
+    }
+
+    .feature {
+        padding: 40px 20px;
+        gap: 24px;
+    }
+
+    .statistics {
+        padding: 40px 0;
+    }
+
+    .social-media {
+        padding: 40px 16px;
+    }
+
+    .contact{
+        padding:48px 20px;
+    }
+    .contact-grid{
+        grid-template-columns: 1fr;
+    }
+    .contact-form .row{
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 手机端：大部分内容改为单列布局 */
+@media (max-width: 600px) {
+
+    header {
+        padding: 8px 16px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .logo {
+        font-size: 1.2em;
+        margin-bottom: 8px;
+    }
+
+    .lang-switch {
+        justify-content: flex-start;
+        gap: 6px;
+    }
+
+    section {
+        padding: 32px 16px;
+    }
+
+    section p {
+        font-size: 1em;
+    }
+
+    .feature {
+        flex-direction: column;   /* 图文上下排 */
+        text-align: left;
+    }
+
+    .feature img,
+    .feature-text {
+        width: 100%;
+    }
+
+    .feature-text h3 {
+        font-size: 1.3em;
+    }
+
+    .stats-container {
+        gap: 24px;
+    }
+
+    .stat {
+        width: 140px;
+        padding: 16px;
+    }
+
+    .social-icons {
+        gap: 20px;
+    }
+
+    .social-card {
+        width: 160px;
+        padding: 16px;
+    }
+
+    .contact h2{
+        font-size: 1.6em;
+    }
 }
