@@ -545,32 +545,4 @@ footer {
     }
 }
 
-/* 通用：带虚化背景图的 section */
-.blur-section {
-    position: relative;
-    overflow: hidden;
-    color: #fff;                 /* 白字，配暗一点的背景 */
-    background-color: transparent;
-}
-
-/* 内容保持在最上层 */
-.blur-section > * {
-    position: relative;
-    z-index: 1;
-}
-
-/* 虚化背景层 */
-.blur-section::before {
-    content: "";
-    position: absolute;
-    inset: 0; /* top/right/bottom/left 都是 0 */
-    background-image: var(--bg-image);
-    background-size: cover;
-    background-position: center;
-    /* 把滤镜调“温柔一点”，避免整块看成灰白 */
-    filter: blur(4px);           /* 从 10px 改成 4px，细节保留一些 */
-    opacity: 0.85;               /* 用透明度控制暗度，比 brightness 好调 */
-    transform: scale(1.08);      /* 防止 blur 后出现边缘空白 */
-    z-index: 0;
-}
 
