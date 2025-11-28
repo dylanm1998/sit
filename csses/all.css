@@ -549,11 +549,11 @@ footer {
 .blur-section {
     position: relative;
     overflow: hidden;
-    color: #fff;               /* 背景图上一般用白字更清晰 */
-    background-color: transparent;  /* 覆盖原来 section 的白色背景 */
+    color: #fff;                 /* 白字，配暗一点的背景 */
+    background-color: transparent;
 }
 
-/* 所有内容在最上层 */
+/* 内容保持在最上层 */
 .blur-section > * {
     position: relative;
     z-index: 1;
@@ -563,11 +563,14 @@ footer {
 .blur-section::before {
     content: "";
     position: absolute;
-    inset: 0; /* 等价于 top:0; right:0; bottom:0; left:0; */
-    background-image: var(--bg-image);  /* 使用 CSS 变量传入图片 */
+    inset: 0; /* top/right/bottom/left 都是 0 */
+    background-image: var(--bg-image);
     background-size: cover;
     background-position: center;
-    filter: blur(10px) brightness(0.6); /* 模糊 + 降亮度 */
-    transform: scale(1.1);              /* 防止 blur 导致边缘空白 */
+    /* 把滤镜调“温柔一点”，避免整块看成灰白 */
+    filter: blur(4px);           /* 从 10px 改成 4px，细节保留一些 */
+    opacity: 0.85;               /* 用透明度控制暗度，比 brightness 好调 */
+    transform: scale(1.08);      /* 防止 blur 后出现边缘空白 */
     z-index: 0;
 }
+
