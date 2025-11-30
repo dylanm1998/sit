@@ -82,7 +82,7 @@ section p {
     text-align: center;
 }
 
-/* ⭐ 关键：包住多个彩色块的 main-sections 自己不要白色背景和左右 padding */
+/* ⭐ 包住多个彩色块的 main-sections 自己不要白色背景和左右 padding */
 .main-sections {
     padding: 0;
     background: transparent;
@@ -335,6 +335,7 @@ footer {
     gap: 20px;
 }
 
+/* ⭐ 卡片改成纵向 flex，让按钮顶到底 */
 .advantage-card {
     background-color: white;
     border-radius: 12px;
@@ -342,6 +343,9 @@ footer {
     padding: 20px;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .advantage-card:hover {
@@ -359,6 +363,11 @@ footer {
     color: #666;
     font-size: 0.9em;
     margin-bottom: 15px;
+}
+
+/* 只对优势区块里的按钮生效：把按钮推到卡片底部 */
+.advantage-card .more-btn {
+    margin-top: auto;
 }
 
 /* ===============================
@@ -582,6 +591,11 @@ footer {
     .contact-form .row {
         grid-template-columns: 1fr;
     }
+
+    /* 平板：优势区块改成 2 列 */
+    .advantage-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 /* 手机端（<= 600px） */
@@ -658,5 +672,51 @@ footer {
 
     .contact h2 {
         font-size: 1.6em;
+    }
+
+    /* 手机端：优势区块改成 1 列（6 行 1 列） */
+    .advantage-container {
+        grid-template-columns: 1fr;
+    }
+
+    .advantage-card {
+        max-width: 360px;
+        margin: 0 auto;
+    }
+}
+/* ===============================
+   手机端卡片大小统一
+================================ */
+@media (max-width: 600px) {
+
+    /* 卡片统一宽度、高度、居中 */
+    .advantage-card {
+        width: 90%;          /* 统一宽度 */
+        max-width: 360px;    /* 稍微限制最大宽度 */
+        min-height: 180px;   /* ⭐ 统一高度（你可自定义 240~300px） */
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 24px 20px;
+        box-sizing: border-box;
+    }
+
+    /* 标题间距固定 */
+    .advantage-card h3 {
+        margin-top: 0;
+        margin-bottom: 12px;
+    }
+
+    /* 内容文字位置固定 */
+    .advantage-card p {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    /* 按钮始终靠底部 */
+    .advantage-card .more-btn {
+        margin-top: auto;   /* ⭐ Push to bottom */
     }
 }
