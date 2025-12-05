@@ -50,8 +50,11 @@ section p {
     background-color: honeydew;
 }
 
+/* PC / 平板：图片略小一点，并限制最大宽度 */
 .feature img {
-    width: 45%;
+    width: 40%;
+    max-width: 420px;
+    height: auto;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
@@ -116,6 +119,7 @@ section p {
     background-color: inherit;
 }
 
+/* 列表和 li 间距 */
 .text-box ul {
     margin: 12px 0 16px;
     padding-left: 1.3em;
@@ -123,6 +127,12 @@ section p {
 
 .text-box li {
     margin-bottom: 4px;
+}
+
+/* 让 feature 里的段落不再被 section p 的 max-width 卡得太窄 */
+.feature .text-box p {
+    max-width: none;
+    margin-bottom: 12px;
 }
 
 /* ===============================
@@ -220,9 +230,28 @@ section p {
         gap: 24px;
     }
 
-    .feature img,
+    /* 手机端图片：适中居中的小卡片 */
+    .feature img {
+        width: 70%;
+        max-width: 260px;   /* 想大一点可以调成 300px */
+        height: auto;
+        margin: 0 auto;
+    }
+
     .feature-text {
         width: 100%;
+    }
+
+    /* 手机端 text-box 略缩进一点，看起来更紧凑 */
+    .feature .text-box {
+        width: 100%;
+        max-width: 100%;
+        padding: 12px 12px 20px;
+        margin-top: 16px;
+    }
+
+    .feature .text-box p {
+        margin-bottom: 10px;
     }
 
     .stats-container {
@@ -264,7 +293,7 @@ section p {
         grid-template-columns: 1fr;
     }
 
-    /* 手机端卡片大小统一（合并去重版本） */
+    /* 手机端卡片大小统一 */
     .advantage-card {
         width: 90%;
         max-width: 360px;
@@ -303,15 +332,5 @@ section p {
     .text-box {
         padding: 0 8px;
         margin-top: 16px;
-    }
-}
-
-@media (max-width: 600px) {
-    .feature .text-box {
-        padding: 12px 12px 20px;
-    }
-
-    .feature .text-box p {
-        margin-bottom: 10px;
     }
 }
