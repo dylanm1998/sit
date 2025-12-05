@@ -305,3 +305,13 @@ section p {
         margin-top: 16px;
     }
 }
+
+@media (max-width: 600px) {
+    .feature .text-box {
+        padding: 12px 12px 20px;
+    }
+
+    .feature .text-box p {
+        margin-bottom: 10px;
+    }
+}
