@@ -37,9 +37,11 @@ section p {
 .feature {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;   /* 更自然的左右排布 */
     gap: 40px;
     padding: 60px 80px;
+    max-width: 1200px;                /* ⭐ 内容最大宽度 */
+    margin: 0 auto;                   /* ⭐ 整块居中 */
 }
 
 .feature-light {
@@ -52,7 +54,7 @@ section p {
 
 /* PC / 平板：图片略小一点，并限制最大宽度 */
 .feature img {
-    width: 50%;
+    width: 48%;
     max-width: 640px;
     height: auto;
     border-radius: 10px;
