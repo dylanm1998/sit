@@ -219,9 +219,23 @@ section p {
         margin-top: 8px;
     }
 
+    /* 标题在小屏略缩小，并允许换行 */
     .main-sections h2 {
         font-size: 1.05rem;
-        padding: 8px 20px 8px 40px;
+        padding: 8px 16px;
         white-space: normal;
+        gap: 8px;              /* 图标和文字之间的间距 */
+    }
+
+    /* 小屏下飞机图标改为正常流布局，避免与文字重叠 */
+    .main-sections h2::before {
+        position: static;      /* 不再 absolute */
+        transform: none;
+        margin-left: 0;
+        width: 22px;
+        height: 22px;
+        font-size: 13px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.18);
     }
 }
+
