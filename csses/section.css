@@ -224,16 +224,25 @@ section p {
         font-size: 1.05rem;
         padding: 8px 16px;
         white-space: normal;
-        gap: 8px;              /* 图标和文字之间的间距 */
+        gap: 8px;
+        display: inline-flex;      /* 保证图标和文字同一行排布 */
+        align-items: center;
+        justify-content: center;
     }
 
     /* 小屏下飞机图标改为正常流布局，避免与文字重叠 */
     .main-sections h2::before {
-        position: static;      /* 不再 absolute */
+        position: static;          /* ⭐ 不再绝对定位 */
         transform: none;
-        margin-left: 0;
+        display: inline-flex;      /* 自己是一个小圆容器 */
+        flex: 0 0 auto;            /* ⭐ 不参与拉伸/压缩 */
         width: 22px;
         height: 22px;
+        line-height: 22px;         /* 让图标垂直居中 */
+        padding: 0;                /* 避免撑开变椭圆 */
+        margin: 0;
+        border-radius: 50%;        /* 圆形 */
+        box-sizing: content-box;
         font-size: 13px;
         box-shadow: 0 2px 6px rgba(0,0,0,0.18);
     }

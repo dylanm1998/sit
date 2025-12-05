@@ -133,3 +133,46 @@
     transform: translateY(-1px);
     background: #333;
 }
+
+/* 平板及以下：改成一列排布 */
+@media (max-width: 900px) {
+    .contact {
+        padding: 32px 16px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;  /* ⭐ 左右两块改成上下两块 */
+        gap: 20px;
+    }
+
+    .contact-card,
+    .contact-form {
+        padding: 16px 18px;
+    }
+
+    .map-wrap {
+        height: 260px;
+    }
+
+    .contact-form .row {
+        grid-template-columns: 1fr;  /* 表单的两列输入框改成一列 */
+    }
+}
+
+/* 手机端再细一点的优化 */
+@media (max-width: 600px) {
+
+    .contact-list {
+        grid-template-columns: 1fr;  /* label 和 value 改成上下排 */
+        row-gap: 6px;
+    }
+
+    .contact-list .label {
+        font-weight: 600;
+    }
+
+    .transport {
+        padding-left: 16px;
+        font-size: 0.95em;
+    }
+}
