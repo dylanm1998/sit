@@ -1,0 +1,93 @@
+.social-media {
+    background-image: linear-gradient(
+            130deg,
+            ghostwhite 0%,
+            ghostwhite 45%,
+            ghostwhite 100%
+    );
+    color: #333;
+    text-align: center;
+    padding: 60px 0;
+}
+
+.social-media h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.social-media p {
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.social-card {
+    background-color: white;
+    border-radius: 12px;
+    width: 180px;
+    padding: 20px;
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.social-card:hover {
+    transform: translateY(-5px);
+}
+
+.social-card img {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 10px;
+}
+
+.social-card .tooltip {
+    position: absolute;
+    bottom: 110%; /* 显示在卡片上方 */
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: 220px;
+
+    background: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    line-height: 1.4em;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    transform-origin: bottom center;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    z-index: 5;
+}
+
+/* 小三角形 */
+.social-card .tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: rgba(0,0,0,0.85) transparent transparent transparent;
+}
+
+/* Hover 显示效果 */
+.social-card:hover .tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-4px);
+}

@@ -1,0 +1,133 @@
+/* ===============================
+   通用 section 样式
+================================ */
+section {
+    padding: 60px 80px;
+    background-image: linear-gradient(
+            130deg,
+            ghostwhite 0%,
+            ghostwhite 45%,
+            ghostwhite 100%
+    );
+}
+
+section h1,
+section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+section p {
+    font-size: 1.1em;
+    line-height: 1.6em;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Intro section 让文字稍微窄一点 */
+.intro-section p {
+    text-align: center;
+}
+
+/* ⭐ 包住多个彩色块的 main-sections 自己不要白色背景和左右 padding，
+   同时让内部标题整体居中 */
+.main-sections {
+    padding: 0;
+    background: transparent;
+    text-align: center; /* 让 h2 这颗“胶囊”在整行中居中 */
+}
+
+/* ===============================
+   图文 Feature 区块
+================================ */
+.feature {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 60px 80px;
+}
+
+.feature-light {
+    background-image: linear-gradient(
+            130deg,
+            ghostwhite 0%,
+            ghostwhite 45%,
+            ghostwhite 100%
+    );
+}
+
+.feature-green {
+    background-image: linear-gradient(
+            130deg,
+            ghostwhite 0%,
+            ghostwhite 45%,
+            ghostwhite 100%
+    );
+}
+
+.feature img {
+    width: 45%;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.feature-text {
+    width: 45%;
+}
+
+.feature-text p {
+    line-height: 1.7em;
+    color: #555;
+    text-align: left;      /* ⭐ 新增这一行，强制左对齐 */
+    margin-left: 0;        /* 保险起见，去掉两侧自动居中 */
+    margin-right: 0;
+}
+
+/* main-sections 里的 h2 做成彩色“胶囊”，宽度跟文字走，并居中 */
+.main-sections h2 {
+    position: relative;
+    display: inline-flex;      /* 宽度跟文字内容一致 */
+    align-items: center;
+    justify-content: center;   /* 胶囊内部文字+图标居中 */
+    gap: 12px;
+    padding: 10px 28px 10px 52px;
+    margin-bottom: 18px;
+    background-image: linear-gradient(
+            130deg,
+            #f39a1d 0%,
+            #f39a1d 45%,
+            #f39a1d 100%
+    );
+    border-radius: 999px;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+    color: #083045;
+    font-weight: 700;
+}
+
+/* 左侧圆形小图标 */
+.main-sections h2::before {
+    content: "✈";
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+}
+
+/* 居中 + 左对齐的文本块 */
+.text-box {
+    max-width: 900px;      /* 文本区域的最大宽度，可根据需要修改 */
+    margin: 24px auto 0;   /* 上方留一点空隙，左右 auto -> 整块居中 */
+    padding: 0 24px;       /* 让文字左右不要贴边，看起来更舒服 */
+    text-align: left;      /* 框内部文字左对齐 */
+    background-color: inherit; /* 颜色跟父元素一样，看起来是一整块背景 */
+}

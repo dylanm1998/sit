@@ -1,0 +1,49 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: linear-gradient(
+            180deg,
+            lightgoldenrodyellow 0%,
+            lightyellow 60%,
+            lightgoldenrodyellow 100%
+    );
+}
+
+.logo {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #444;
+    letter-spacing: 1px;
+}
+
+.lang-switch {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.lang-switch a {
+    text-decoration: none;
+    color: #666;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+.lang-switch a:hover {
+    background-color: #eee;
+}
+
+.logo img {
+    max-height: 50px;   /* 控制最大高度——自动自适应宽高 */
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}

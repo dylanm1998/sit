@@ -1,0 +1,200 @@
+/* 平板及以下（<= 920px） */
+@media (max-width: 920px) {
+
+    header {
+        padding: 10px 20px;
+        flex-wrap: wrap;
+        row-gap: 8px;
+    }
+
+    section {
+        padding: 40px 20px;
+    }
+
+    /* main-sections 仍然保持无 padding，避免彩色块两侧再出现白边 */
+    .main-sections {
+        padding: 0;
+    }
+
+    .feature {
+        padding: 40px 20px;
+        gap: 24px;
+    }
+
+    .statistics {
+        padding: 40px 0;
+    }
+
+    .social-media {
+        padding: 40px 16px;
+    }
+
+    .contact {
+        padding: 48px 20px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form .row {
+        grid-template-columns: 1fr;
+    }
+
+    /* 平板：优势区块改成 2 列 */
+    .advantage-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* 手机端（<= 600px） */
+@media (max-width: 600px) {
+
+    header {
+        padding: 8px 16px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .logo {
+        font-size: 1.2em;
+        margin-bottom: 8px;
+    }
+
+    .lang-switch {
+        justify-content: flex-start;
+        gap: 6px;
+    }
+
+    section {
+        padding: 32px 16px;
+    }
+
+    /* 同样，手机上 main-sections 不要左右留白 */
+    .main-sections {
+        padding: 0;
+    }
+
+    section p {
+        font-size: 1em;
+    }
+
+    .feature {
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .feature img,
+    .feature-text {
+        width: 100%;
+    }
+
+    .stats-container {
+        gap: 24px;
+    }
+
+    .stat {
+        width: 140px;
+        padding: 16px;
+    }
+
+    .social-media {
+        padding: 32px 16px;
+    }
+
+    .social-icons {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .social-card {
+        width: 100%;
+        max-width: 320px;
+        padding: 16px;
+    }
+
+    .social-card img {
+        width: 48px;
+        height: 48px;
+    }
+
+    .contact h2 {
+        font-size: 1.6em;
+    }
+
+    /* 手机端：优势区块改成 1 列（6 行 1 列） */
+    .advantage-container {
+        grid-template-columns: 1fr;
+    }
+
+    .advantage-card {
+        max-width: 360px;
+        margin: 0 auto;
+    }
+}
+/* ===============================
+   手机端卡片大小统一
+================================ */
+@media (max-width: 600px) {
+
+    /* 卡片统一宽度、高度、居中 */
+    .advantage-card {
+        width: 90%;          /* 统一宽度 */
+        max-width: 360px;    /* 稍微限制最大宽度 */
+        min-height: 180px;   /* ⭐ 统一高度（你可自定义 240~300px） */
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 24px 20px;
+        box-sizing: border-box;
+    }
+
+    /* 标题间距固定 */
+    .advantage-card h3 {
+        margin-top: 0;
+        margin-bottom: 12px;
+    }
+
+    /* 内容文字位置固定 */
+    .advantage-card p {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    /* 让按钮在所有屏幕尺寸下都贴底 */
+    .advantage-card .more-btn {
+        margin-top: auto;
+    }
+
+    /* ===============================
+       手机端卡片大小统一
+    ================================ */
+    @media (max-width: 600px) {
+
+        .advantage-card {
+            width: 90%;
+            max-width: 360px;
+            min-height: 180px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 24px 20px;
+            box-sizing: border-box;
+        }
+
+        .advantage-card h3 {
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .advantage-card p {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    }
+}
