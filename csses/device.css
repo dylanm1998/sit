@@ -270,4 +270,38 @@ section p {
         max-width: 360px;
         min-height: 180px;
         margin: 0 auto;
-        dis
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 24px 20px;
+        box-sizing: border-box;
+    }
+
+    .advantage-card h3 {
+        margin-top: 0;
+        margin-bottom: 12px;
+    }
+
+    .advantage-card p {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .advantage-card .more-btn {
+        margin-top: auto; /* 按钮贴底 */
+    }
+
+    /* 手机端：标题胶囊稍微紧凑，防止太大 */
+    .main-sections h2 {
+        font-size: 1.1rem;
+        padding: 10px 18px 10px 40px;
+        white-space: normal;   /* 允许自动换行 */
+        text-align: center;
+    }
+
+    .text-box {
+        padding: 0 8px;
+        margin-top: 16px;
+    }
+}
