@@ -1,14 +1,15 @@
 /* ===============================
-   通用 section 样式
+   通用 section 样式（自适应 padding）
 ================================ */
 section {
-    padding: 60px 80px;
+    padding: clamp(32px, 6vw, 60px) clamp(16px, 6vw, 80px);
     background-image: linear-gradient(
             130deg,
             ghostwhite 0%,
             ghostwhite 45%,
             ghostwhite 100%
     );
+    box-sizing: border-box;
 }
 
 section h1,
@@ -29,34 +30,28 @@ section p {
     text-align: center;
 }
 
-/* ⭐ 包住多个彩色块的 main-sections 自己不要白色背景和左右 padding，
-   同时让内部标题整体居中 */
+/* main-sections 自己透明背景；h2 居中 */
 .main-sections {
     padding: 0;
     background: transparent;
-    text-align: center; /* 让 h2 这颗“胶囊”在整行中居中 */
+    text-align: center;
 }
 
 /* ===============================
-   图文 Feature 区块
+   图文 Feature 区块（核心自适应）
 ================================ */
 .feature {
     display: flex;
+    flex-wrap: wrap;  /* ⭐ 宽度不够时自动换行 */
     align-items: center;
-    justify-content: center;
-    gap: 40px;
-    padding: 60px 80px;
+    justify-content: space-between;
+    gap: clamp(24px, 3vw, 40px);
+    padding: clamp(32px, 5vw, 60px) clamp(16px, 5vw, 80px);
+    box-sizing: border-box;
 }
 
-.feature-light {
-    background-image: linear-gradient(
-            130deg,
-            ghostwhite 0%,
-            ghostwhite 45%,
-            ghostwhite 100%
-    );
-}
-
+/* 背景统一淡色渐变 */
+.feature-light,
 .feature-green {
     background-image: linear-gradient(
             130deg,
@@ -66,30 +61,36 @@ section p {
     );
 }
 
+/* 左右两块：各占差不多一半，最小宽度 320px */
+.feature > img,
+.feature > .text-box,
+.feature > .feature-text {
+    flex: 1 1 0;
+    min-width: 320px;      /* 小于这个就会自动换行 */
+}
+
+/* 图片样式（PC & 大部分屏宽通用） */
 .feature img {
-    width: 45%;
+    width: 100%;
+    height: auto;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    object-fit: cover;
 }
 
+/* 旧的 .feature-text 保留兼容性（你现在主要用 .text-box） */
 .feature-text {
-    width: 45%;
+    text-align: left;
 }
 
-.feature-text p {
-    line-height: 1.7em;
-    color: #555;
-    text-align: left;      /* ⭐ 新增这一行，强制左对齐 */
-    margin-left: 0;        /* 保险起见，去掉两侧自动居中 */
-    margin-right: 0;
-}
-
-/* main-sections 里的 h2 做成彩色“胶囊”，宽度跟文字走，并居中 */
+/* ===============================
+   main-sections 里的 h2：橙色胶囊标题
+================================ */
 .main-sections h2 {
     position: relative;
-    display: inline-flex;      /* 宽度跟文字内容一致 */
+    display: inline-flex;
     align-items: center;
-    justify-content: center;   /* 胶囊内部文字+图标居中 */
+    justify-content: center;
     gap: 12px;
     padding: 10px 28px 10px 52px;
     margin-bottom: 18px;
@@ -105,7 +106,7 @@ section p {
     font-weight: 700;
 }
 
-/* 左侧圆形小图标 */
+/* 标题左侧圆形图标 */
 .main-sections h2::before {
     content: "✈";
     position: absolute;
@@ -123,45 +124,104 @@ section p {
     box-shadow: 0 4px 10px rgba(0,0,0,0.18);
 }
 
-/* 居中 + 左对齐的文本块 */
+/* ===============================
+   文本盒子：整体左对齐
+================================ */
 .text-box {
-    max-width: 900px;      /* 文本区域的最大宽度，可根据需要修改 */
-    margin: 24px auto 0;   /* 上方留一点空隙，左右 auto -> 整块居中 */
-    padding: 0 24px;       /* 让文字左右不要贴边，看起来更舒服 */
-    text-align: left;      /* 框内部文字左对齐 */
-    background-image: linear-gradient(
-            130deg,
-            ghostwhite 0%,
-            ghostwhite 45%,
-            ghostwhite 100%
-    );
-}
-
-/* 让 feature 区里的文本块排版更整齐 */
-.feature .text-box {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 16px 24px 24px;
+    margin: 0;
+    padding: 0 24px;
     text-align: left;
+    background-color: inherit;
+    box-sizing: border-box;
+    max-width: none;  /* ⭐ 不再限制为 900px，跟图片保持同列宽 */
 }
 
-/* 标题和正文、列表统一左边缘 */
-.feature .text-box h2 {
-    margin: 0 0 16px;
-}
-
-/* 覆盖全局 section p 的 max-width 和 margin:auto */
-.feature .text-box p {
+/* 覆盖全局 section p 的 max-width/margin，让 feature 内文字跟图片对齐 */
+.feature .text-box p,
+.feature .feature-text p {
     max-width: none;
-    margin: 0 0 12px;    /* 普通段落下面留一点间距 */
+    margin: 0 0 12px;
 }
 
-/* 列表缩进稍微小一点，和段落衔接自然 */
-.feature .text-box ul {
-    margin: 8px 0 16px;
-    padding-left: 1.2rem;   /* 比默认小一点的缩进 */
+/* 列表和 li 间距 */
+.text-box ul {
+    margin: 12px 0 16px;
+    padding-left: 1.3em;
 }
 
-.feature .text-box li {
+.text-box li {
     margin-bottom: 4px;
+}
+
+/* ===============================
+   优势区块：用 auto-fit 自适应列数
+================================ */
+.advantage-card {
+    padding: 24px 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    background-color: #fff;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.advantage-card h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.advantage-card p {
+    margin-bottom: 20px;
+}
+
+.advantage-card .more-btn {
+    margin-top: auto;
+}
+
+/* ===============================
+   小屏断点（<= 640px）：只做微调
+================================ */
+@media (max-width: 640px) {
+
+    section {
+        padding: 24px 16px;
+    }
+
+    section p {
+        font-size: 1rem;
+    }
+
+    .feature {
+        padding: 24px 16px;
+        gap: 20px;
+        flex-direction: column;      /* ⭐ 图片在上文字在下 */
+        align-items: center;
+    }
+
+    .feature > img,
+    .feature > .text-box,
+    .feature > .feature-text {
+        min-width: 0;
+        width: 100%;
+        flex: 0 1 auto;
+    }
+
+    .feature img {
+        max-width: 480px;
+        margin: 0 auto;
+    }
+
+    .text-box {
+        padding: 0 8px;
+        margin-top: 8px;
+    }
+
+    .main-sections h2 {
+        font-size: 1.05rem;
+        padding: 8px 20px 8px 40px;
+        white-space: normal;
+    }
 }
