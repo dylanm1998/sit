@@ -40,7 +40,8 @@ section p {
     justify-content: space-between;   /* 更自然的左右排布 */
     gap: 40px;
     padding: 60px 80px;
-    max-width: 1200px;                /* ⭐ 内容最大宽度 */
+    width: 100%;        /* 确保铺满 */
+    max-width: none;    /* 如果之前加过 max-width，就清掉 */
     margin: 0 auto;                   /* ⭐ 整块居中 */
 }
 
