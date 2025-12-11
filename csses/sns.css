@@ -1,10 +1,5 @@
 .social-media {
-    background-image: linear-gradient(
-            130deg,
-            ghostwhite 0%,
-            ghostwhite 45%,
-            ghostwhite 100%
-    );
+    background: ghostwhite;
     color: #333;
     text-align: center;
     padding: 60px 0;
@@ -28,16 +23,16 @@
 }
 
 .social-card {
-    background-color: white;
+    background: #fff;
     border-radius: 12px;
     width: 180px;
     padding: 20px;
-    transition: transform 0.3s;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     position: relative;
+    transition: transform .3s;
 }
 
 .social-card:hover {
@@ -47,47 +42,38 @@
 .social-card img {
     width: 60px;
     height: 60px;
-    margin: 0 auto 10px;
+    margin-bottom: 10px;
 }
 
-.social-card .tooltip {
+.tooltip {
     position: absolute;
-    bottom: 110%; /* 显示在卡片上方 */
+    bottom: 110%;
     left: 50%;
     transform: translateX(-50%);
-    width: max-content;
     max-width: 220px;
-
-    background: rgba(0, 0, 0, 0.85);
-    color: #fff;
     padding: 12px 15px;
+    background: rgba(0,0,0,.85);
+    color: #fff;
     border-radius: 8px;
-    font-size: 0.9em;
-    line-height: 1.4em;
-
+    font-size: .9em;
+    line-height: 1.4;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.25s ease, transform 0.25s ease;
-    transform-origin: bottom center;
-
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-    z-index: 5;
+    transition: opacity .25s ease, transform .25s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,.25);
 }
 
-/* 小三角形 */
-.social-card .tooltip::after {
+.tooltip::after {
     content: "";
     position: absolute;
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    border-width: 6px;
-    border-style: solid;
-    border-color: rgba(0,0,0,0.85) transparent transparent transparent;
+    border: 6px solid transparent;
+    border-top-color: rgba(0,0,0,.85);
 }
 
-/* Hover 显示效果 */
 .social-card:hover .tooltip {
     opacity: 1;
-    transform: translateX(-50%) translateY(-4px);
+    transform: translate(-50%, -4px);
 }

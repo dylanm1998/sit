@@ -3,16 +3,11 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 40px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
     z-index: 10;
-    background: linear-gradient(
-            180deg,
-            lightgoldenrodyellow 0%,
-            lightyellow 60%,
-            lightgoldenrodyellow 100%
-    );
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .logo {
@@ -20,6 +15,12 @@ header {
     font-weight: bold;
     color: #444;
     letter-spacing: 1px;
+}
+
+.logo img {
+    max-height: 50px;
+    width: auto;
+    object-fit: contain;
 }
 
 .lang-switch {
@@ -35,15 +36,9 @@ header {
     padding: 5px 10px;
     border-radius: 5px;
     font-size: 0.9em;
+    transition: background .2s;
 }
 
 .lang-switch a:hover {
     background-color: #eee;
-}
-
-.logo img {
-    max-height: 50px;   /* 控制最大高度——自动自适应宽高 */
-    width: auto;
-    height: auto;
-    object-fit: contain;
 }
